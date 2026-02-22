@@ -25,6 +25,8 @@ npm install spid-cie-button
 yarn add spid-cie-button
 # or
 pnpm add spid-cie-button
+# or
+bun add spid-cie-button
 ```
 
 ### APIs
@@ -146,17 +148,17 @@ onMounted(() => initDialog());
 After cloning run the following commands:
 
 ```bash
-pnpm install
+bun install
 ```
 
 Then, to start the development server:
 
 ```bash
-pnpm dev
+bun dev
 ```
 
 To include the demo endpoint in the list of IDPs, you can run the following command:
 
 ```bash
-VITE_SPID_DEVELOPMENT_MODE=true pnpm dev
+VITE_SPID_DEVELOPMENT_MODE=true bun dev
 ```

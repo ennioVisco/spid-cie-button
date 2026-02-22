@@ -30,6 +30,6 @@ export default defineConfig({
   },
   plugins: [
     // We include types to ease the use of the library
-    dts(),
+    dts({ tsgo: true }),
   ],
 });

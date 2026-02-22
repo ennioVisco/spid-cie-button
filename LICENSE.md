@@ -8,7 +8,7 @@ The SPID logo is a registered trademark by AgID (Agenzia per l'Italia Digitale),
 
 The CIE logo (taken from [italia/cie-graphics](https://github.com/italia/cie-graphics)) does not show an explicit license, although it is probably a registered trademark by the Italian Ministry of the Interior (Ministero dell'Interno).
 
-For the rest of this repository, the copyright (c) 2024 is of Fyblo S.R.L., licensed under the MIT License.
+For the rest of this repository, the copyright (c) 2026 is of Ennio Visconti, licensed under the MIT License.
 
 ## MIT License:
 
