@@ -58,6 +58,11 @@
   font-weight: 600;
   align-items: center;
   font-size: calc(1.75rem * var(--spid-button-scale));
+  text-decoration: none;
+}
+
+.spid-button[hidden] {
+  display: none;
 }
 
 .spid-button:hover {

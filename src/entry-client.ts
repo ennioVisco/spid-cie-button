@@ -6,7 +6,7 @@ import "./spid-button.css";
  */
 export const initDialog = () => {
   const spidDialog = document.querySelector("#spid-dialog") as HTMLDialogElement;
-  const spidButton = document.querySelectorAll(".spid-button");
+  const spidButton = document.querySelectorAll('.spid-button[data-type="spid"]');
   const spidSearch = document.querySelector("#spid-dialog input[type=search]") as HTMLInputElement;
 
   for (const button of spidButton) {

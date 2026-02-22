@@ -58,12 +58,13 @@ const createRequestListener = async () => {
           targetSelf: true,
           withDemo: true,
         });
-        const appButton = await renderButton({ lang, type: "spid" });
+        const appSpidButton = await renderButton({ lang, type: "spid" });
+        const appCieButton = await renderButton({ lang, type: "cie", href: rpEndpoint("CIE") });
         const appHeadHtml = await renderHead();
 
         const html = transformedTemplate.replace(
           "<!--spid-cie-button-ssr-outlet-->",
-          appDialog + appButton,
+          appDialog + appSpidButton + appCieButton,
         );
 
         const finalHtml = html.replace("<!--spid-cie-button-ssr-head-outlet-->", appHeadHtml);

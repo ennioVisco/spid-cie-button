@@ -2,9 +2,6 @@
 
 Opinionated component to support SPID and CIE login buttons according to the Italian government's standards.
 
-> [!WARNING]  
-> the CIE button is still under development
-
 This project is inspired by [italia/spid-sp-access-button](https://github.com/italia/spid-sp-access-button), with a few key differences:
 
 - It is English-first: while the buttons are provided in Italian as well, the language of the project is English, please refrain from asking any question in a language other than that.
@@ -39,11 +36,19 @@ For parts that can be rendered on the server:
 import { renderButton, renderDialog, renderHead } from "spid-cie-button/server";
 
 const head = renderHead(); // returns the style tag, that should be included in the head of the page to avoid layout shifts
-const button = renderButton({ lang: "it", type: "spid" }); // returns the HTML of the button element, with the specified language ("it" or "en") and type ("spid" vs "cie")
 
+// SPID button — renders a <button> that opens the provider selection dialog
+const spidButton = renderButton({ lang: "it", type: "spid" });
+
+// CIE button — renders an <a> that links directly to the CIE IdP endpoint
+const cieButton = renderButton({ lang: "it", type: "cie", href: "https://example.com/cie-login" });
+
+// SPID dialog — the provider selection modal (only needed for SPID)
 const rpEndpoint = (idp: string) => `https://example.com/spid?idp=${idp}`;
-const dialog = renderDialog({ lang: "it", rpEndpoint }); // returns the HTML of the SPID dialog, with the specified language ("it" or "en") and where the actions are controlled by the `rpEndpoint` function
+const dialog = renderDialog({ lang: "it", rpEndpoint });
 ```
+
+The SPID button opens a dialog with the list of identity providers. The CIE button links directly to the service provider's CIE endpoint, since CIE uses a single identity provider managed by the Ministry of the Interior.
 
 Render dialog accepts extra options to control whether demo and validator endpoint should be added or not:
 
@@ -62,7 +67,7 @@ For the interactions client-side, the following API is available:
 ```ts
 import { initDialog } from "spid-cie-button";
 
-initDialog(); // initializes the dialog, making it interactive
+initDialog(); // initializes the SPID dialog, making it interactive
 ```
 
 The following `env` variable adds a Demo IDP to the list of IDPs:
@@ -99,7 +104,8 @@ import { initDialog } from "spid-cie-button";
 
 export default function SpidButton() {
   const head = renderHead();
-  const button = renderButton({ lang: "it", type: "spid" });
+  const spidButton = renderButton({ lang: "it", type: "spid" });
+  const cieButton = renderButton({ lang: "it", type: "cie", href: "/cie-login" });
   const rpEndpoint = (idp: string) => `https://example.com/spid?idp=${idp}`;
   const dialog = renderDialog({ lang: "it", rpEndpoint });
   useEffect(() => {
@@ -108,9 +114,9 @@ export default function SpidButton() {
   return (
     <div>
       {head}
-      <div>{button}</div>
+      <div>{spidButton}</div>
+      <div>{cieButton}</div>
       <div>{dialog}</div>
-      <script>initDialog();</script>
     </div>
   );
 }
@@ -126,11 +132,12 @@ import { initDialog } from "spid-cie-button";
 import { renderButton, renderDialog, renderHead } from "spid-cie-button/server";
 
 const head = renderHead();
-const button = renderButton({ lang: "it", type: "spid" });
+const spidButton = renderButton({ lang: "it", type: "spid" });
+const cieButton = renderButton({ lang: "it", type: "cie", href: "/cie-login" });
 const rpEndpoint = (idp: string) => `https://example.com/spid?idp=${idp}`;
 const dialog = renderDialog({ lang: "it", rpEndpoint });
 
-const html = head + button + dialog;
+const html = head + spidButton + cieButton + dialog;
 // in Nuxt, the server part could be in a /api/ endpoint or in a server component
 
 onMounted(() => initDialog());

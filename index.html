@@ -4,10 +4,59 @@
     <meta charset="utf-8" />
     <meta name="color-scheme" content="light dark" />
     <!--spid-cie-button-ssr-head-outlet-->
+    <style>
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+      }
+    </style>
   </head>
 
   <body>
-    <div id="app"><!--spid-cie-button-ssr-outlet--></div>
+    <label class="theme-toggle">
+      <input
+        type="checkbox"
+        onchange="document.documentElement.style.colorScheme = this.checked ? 'dark' : 'light'"
+      />
+      Dark
+    </label>
+
+    <div>
+      <fieldset>
+        <legend>Button type</legend>
+        <label
+          ><input
+            type="radio"
+            name="btn-type"
+            value="spid"
+            checked
+            onchange="toggleButton(this.value)"
+          />
+          SPID</label
+        >
+        <label
+          ><input type="radio" name="btn-type" value="cie" onchange="toggleButton(this.value)" />
+          CIE</label
+        >
+      </fieldset>
+      <div id="app"><!--spid-cie-button-ssr-outlet--></div>
+    </div>
+    <script>
+      function toggleButton(type) {
+        for (const btn of document.querySelectorAll(".spid-button")) {
+          btn.hidden = btn.dataset.type !== type;
+        }
+      }
+      toggleButton("spid");
+    </script>
     <script type="module">
       import { initDialog } from "./src/entry-client.ts";
       initDialog();
