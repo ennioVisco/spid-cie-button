@@ -1,3 +1,9 @@
+#### 1.0.5 (2026-02-22)
+
+##### New Features
+
+*  completed CIE button ([b93d103e](https://github.com/enniovisconti/spid-cie-button/commit/b93d103ecbeeff2a100c4108bb02f215d0777f98))
+
 #### 1.0.4 (2024-03-30)
 
 ##### New Features

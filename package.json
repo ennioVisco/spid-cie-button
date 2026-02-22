@@ -1,6 +1,6 @@
 {
   "name": "spid-cie-button",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A web component to authenticate with SPID and CIE",
   "keywords": [
     "Button",
