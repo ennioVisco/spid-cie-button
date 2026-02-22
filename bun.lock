@@ -16,7 +16,7 @@
         "vite": "^8.0.0-beta.15",
       },
       "peerDependencies": {
-        "ofetch": "^2.0.0-alpha.3",
+        "ofetch": "2.0.0-alpha.3",
       },
     },
   },
