@@ -69,8 +69,8 @@ type ProvidersInput = {
  */
 const renderProviders = (opts: ProvidersInput) => {
   let list = "";
-  
-  const extras = []
+
+  const extras = [];
 
   if (import.meta.env.VITE_SPID_DEVELOPMENT_MODE === "true" || opts.withDemo) {
     extras.push({ organization_name: "DEMO" });
@@ -78,7 +78,7 @@ const renderProviders = (opts: ProvidersInput) => {
   if (opts.withValidator) {
     extras.push({ organization_name: "VALIDATOR" });
   }
-  if( opts.withDemo && opts.withValidator){ 
+  if (opts.withDemo && opts.withValidator) {
     extras.push({ organization_name: "DEMOVALIDATOR" });
   }
 

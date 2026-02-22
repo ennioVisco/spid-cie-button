@@ -44,6 +44,7 @@ const dialog = renderDialog({ lang: "it", rpEndpoint }); // returns the HTML of 
 ```
 
 Render dialog accepts extra options to control whether demo and validator endpoint should be added or not:
+
 ```ts
 export type DialogInputExtraOptions = {
   targetSelf?: boolean; // whether it should open a new page on provider click (target='_blank' vs target='_self') or not
@@ -51,6 +52,7 @@ export type DialogInputExtraOptions = {
   withValidator?: boolean; // whether it should add the validator provider or not
 };
 ```
+
 Note that if both `withDemo` and `withValidator` are `true`, an extra Demo provider with validator mode is added.
 
 For the interactions client-side, the following API is available:

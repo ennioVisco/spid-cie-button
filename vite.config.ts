@@ -1,7 +1,9 @@
 import { defineConfig } from "vite";
 import { resolve } from "node:path";
-import dts from "vite-plugin-dts";
+import { fileURLToPath } from "node:url";
+import { dts } from "rolldown-plugin-dts";
 
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const isServer = process.env.BUILD_TARGET === "server";
 
 export default defineConfig({
@@ -9,8 +11,6 @@ export default defineConfig({
     // We want to leave the minification to the users, so we don't minify
     minify: false,
 
-    // We want to generate a manifest for the client, but not for the server
-    ssrManifest: !isServer,
     ssr: isServer,
 
     // We want to change the output dir and content based on the build target
@@ -21,18 +21,15 @@ export default defineConfig({
         ...(isServer && { server: resolve(__dirname, "src/entry-server.ts") }),
       },
       // As of 2024, basically only "es" matters
-      formats: ["es"], // "cjs", "umd", "iife" ],
+      formats: ["es"],
     },
 
     rollupOptions: {
       external: ["ofetch"],
-      ...(isServer && { input: "src/entry-server.ts" }),
     },
   },
   plugins: [
     // We include types to ease the use of the library
-    dts({
-      insertTypesEntry: true,
-    }),
+    dts(),
   ],
 });

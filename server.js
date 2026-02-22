@@ -43,15 +43,9 @@ const createRequestListener = async () => {
       }
 
       if (serveUrl.endsWith(".html")) {
-        const template = readFileSync(
-          resolve(__dirname, "./index.html"),
-          "utf-8",
-        );
+        const template = readFileSync(resolve(__dirname, "./index.html"), "utf-8");
 
-        const transformedTemplate = await vite.transformIndexHtml(
-          serveUrl,
-          template,
-        );
+        const transformedTemplate = await vite.transformIndexHtml(serveUrl, template);
 
         const { renderDialog, renderButton, renderHead } =
           await vite.ssrLoadModule("/src/entry-server.ts");
@@ -72,10 +66,7 @@ const createRequestListener = async () => {
           appDialog + appButton,
         );
 
-        const finalHtml = html.replace(
-          "<!--spid-cie-button-ssr-head-outlet-->",
-          appHeadHtml,
-        );
+        const finalHtml = html.replace("<!--spid-cie-button-ssr-head-outlet-->", appHeadHtml);
 
         res.setHeader("Content-Type", "text/html");
         res.writeHead(200);

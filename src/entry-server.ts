@@ -1,9 +1,13 @@
 import { fetchProviders } from "./providers";
 import { randomSort } from "./utils";
-import { renderDialog as _renderDialog, type DialogInput, type RPEndpoint } from "./render";
+import {
+  renderDialog as _renderDialog,
+  renderButton as _renderButton,
+  type DialogInput,
+} from "./render";
 import stylesheet from "./spid-button.css?inline";
 
-export { renderButton } from "./render";
+export const renderButton = _renderButton;
 
 type RenderDialogInput = Omit<DialogInput, "providers">;
 

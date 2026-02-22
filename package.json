@@ -1,23 +1,40 @@
 {
   "name": "@fyblo/spid-cie-button",
-  "author": "Fyblo s.r.l. (https://fyblo.com)",
+  "version": "1.0.4",
+  "description": "A web component to authenticate with SPID and CIE",
+  "keywords": [
+    "Button",
+    "CIE",
+    "SPID",
+    "Web Component",
+    "authentication"
+  ],
+  "homepage": "https://github.com/fyblo/spid-cie-button#readme",
+  "bugs": {
+    "url": "https://github.com/fyblo/spid-cie-button/issues"
+  },
   "license": "SEE LICENSE IN LICENSE.md",
+  "author": "Fyblo s.r.l. (https://fyblo.com)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fyblo/spid-cie-button.git"
   },
-  "bugs": {
-    "url": "https://github.com/fyblo/spid-cie-button/issues"
-  },
-  "homepage": "https://github.com/fyblo/spid-cie-button#readme",
-  "description": "A web component to authenticate with SPID and CIE",
-  "type": "module",
-  "version": "1.0.4",
   "files": [
     "dist"
   ],
+  "type": "module",
   "main": "dist/client/index.js",
   "module": "dist/client/index.js",
+  "typesVersions": {
+    "*": {
+      "server": [
+        "./dist/server/server.d.ts"
+      ],
+      "client": [
+        "./dist/client/index.d.ts"
+      ]
+    }
+  },
   "exports": {
     ".": {
       "types": "./dist/client/index.d.ts",
@@ -32,45 +49,30 @@
       "default": "./dist/server/entry-server.js"
     }
   },
-  "typesVersions": {
-    "*": {
-      "server": [
-        "./dist/server/server.d.ts"
-      ],
-      "client": [
-        "./dist/client/index.d.ts"
-      ]
-    }
-  },
   "scripts": {
-    "changes": " pnpm changelog --exclude chore,build,ci",
-    "prettify": "pnpm exec prettier . --write",
-    "dev": "pnpm prettify && node server",
-    "build": "pnpm build:client && pnpm build:server",
+    "changes": "bunx changelog --exclude chore,build,ci",
+    "fmt": "oxfmt .",
+    "lint": "oxlint",
+    "dev": "bun run fmt && bun server",
+    "build": "bun run build:client && bun run build:server",
     "build:client": "BUILD_TARGET=client vite build",
     "build:server": "BUILD_TARGET=server vite build",
-    "preview": "NODE_ENV=production node server",
-    "release": "pnpm build && npm publish",
-    "test": "vitest"
+    "preview": "NODE_ENV=production bun server",
+    "release": "bun run build && npm publish",
+    "test": "bun test"
   },
-  "keywords": [
-    "SPID",
-    "CIE",
-    "Button",
-    "Web Component",
-    "authentication"
-  ],
   "devDependencies": {
-    "@types/node": "^20.11.28",
+    "@types/node": "^25.3.0",
+    "bun-types": "latest",
     "generate-changelog": "^1.8.0",
-    "ofetch": "^1.3.3",
-    "prettier": "^3.2.5",
+    "ofetch": "2.0.0-alpha.3",
+    "oxfmt": "latest",
+    "oxlint": "latest",
+    "rolldown-plugin-dts": "^0.22.1",
     "typescript": "^5.4.2",
-    "vite": "^5.1.6",
-    "vite-plugin-dts": "^3.7.3",
-    "vitest": "^1.4.0"
+    "vite": "^8.0.0-beta.15"
   },
   "peerDependencies": {
-    "ofetch": "^1.3.3"
+    "ofetch": "2.0.0-alpha.3"
   }
 }

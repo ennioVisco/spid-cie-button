@@ -2,14 +2,14 @@
 
 ##### New Features
 
-*  added optional validator and endpoint IDPs ([b4faaf80](https://github.com/fyblo/spid-cie-button/commit/b4faaf80d8c78dd661436e384da17c27f09b0bf2))
+- added optional validator and endpoint IDPs ([b4faaf80](https://github.com/fyblo/spid-cie-button/commit/b4faaf80d8c78dd661436e384da17c27f09b0bf2))
 
 #### 1.0.3 (2024-03-19)
 
 ##### Bug Fixes
 
-*  fixed minor mobile accessibility issues ([91f08df3](https://github.com/fyblo/spid-cie-button/commit/91f08df399f14ede8a030b878f91a1a2ded8f10b))
-*  process.env not working on client ([56f463f3](https://github.com/fyblo/spid-cie-button/commit/56f463f330d1c0b087eb99ea7dfbad0b8099244c))
+- fixed minor mobile accessibility issues ([91f08df3](https://github.com/fyblo/spid-cie-button/commit/91f08df399f14ede8a030b878f91a1a2ded8f10b))
+- process.env not working on client ([56f463f3](https://github.com/fyblo/spid-cie-button/commit/56f463f330d1c0b087eb99ea7dfbad0b8099244c))
 
 #### 1.0.0 (2024-03-19)
 

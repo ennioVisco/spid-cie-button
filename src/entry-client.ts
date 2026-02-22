@@ -5,13 +5,9 @@ import "./spid-button.css";
  * @returns the dialog element
  */
 export const initDialog = () => {
-  const spidDialog = document.querySelector(
-    "#spid-dialog",
-  ) as HTMLDialogElement;
+  const spidDialog = document.querySelector("#spid-dialog") as HTMLDialogElement;
   const spidButton = document.querySelectorAll(".spid-button");
-  const spidSearch = document.querySelector(
-    "#spid-dialog input[type=search]",
-  ) as HTMLInputElement;
+  const spidSearch = document.querySelector("#spid-dialog input[type=search]") as HTMLInputElement;
 
   for (const button of spidButton) {
     button.addEventListener("click", () => {
@@ -44,10 +40,7 @@ export const initDialog = () => {
   return spidDialog;
 };
 
-const filterProviders = (
-  word: string,
-  providers: NodeListOf<HTMLLIElement>,
-) => {
+const filterProviders = (word: string, providers: NodeListOf<HTMLLIElement>) => {
   for (const provider of providers) {
     if (provider.dataset.idpName?.toLowerCase().includes(word)) {
       provider.style.display = "block";
