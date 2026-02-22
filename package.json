@@ -1,23 +1,40 @@
 {
   "name": "spid-cie-button",
-  "author": "Ennio Visconti",
+  "version": "1.0.4",
+  "description": "A web component to authenticate with SPID and CIE",
+  "keywords": [
+    "Button",
+    "CIE",
+    "SPID",
+    "Web Component",
+    "authentication"
+  ],
+  "homepage": "https://github.com/enniovisconti/spid-cie-button#readme",
+  "bugs": {
+    "url": "https://github.com/enniovisconti/spid-cie-button/issues"
+  },
   "license": "SEE LICENSE IN LICENSE.md",
+  "author": "Ennio Visconti",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/enniovisconti/spid-cie-button.git"
   },
-  "bugs": {
-    "url": "https://github.com/enniovisconti/spid-cie-button/issues"
-  },
-  "homepage": "https://github.com/enniovisconti/spid-cie-button#readme",
-  "description": "A web component to authenticate with SPID and CIE",
-  "type": "module",
-  "version": "1.0.4",
   "files": [
     "dist"
   ],
+  "type": "module",
   "main": "dist/client/index.js",
   "module": "dist/client/index.js",
+  "typesVersions": {
+    "*": {
+      "server": [
+        "./dist/server/server.d.ts"
+      ],
+      "client": [
+        "./dist/client/index.d.ts"
+      ]
+    }
+  },
   "exports": {
     ".": {
       "types": "./dist/client/index.d.ts",
@@ -30,16 +47,6 @@
     "./server": {
       "types": "./dist/server/entry-server.d.ts",
       "default": "./dist/server/entry-server.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "server": [
-        "./dist/server/server.d.ts"
-      ],
-      "client": [
-        "./dist/client/index.d.ts"
-      ]
     }
   },
   "scripts": {
@@ -55,13 +62,6 @@
     "release": "bun run build && npm publish",
     "test": "bun test"
   },
-  "keywords": [
-    "SPID",
-    "CIE",
-    "Button",
-    "Web Component",
-    "authentication"
-  ],
   "devDependencies": {
     "@types/node": "^25.3.0",
     "@typescript/native-preview": "^7.0.0-dev.20260222.1",

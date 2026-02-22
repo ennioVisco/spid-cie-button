@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { dts } from "rolldown-plugin-dts";
+import { type Plugin } from "vite";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const isServer = process.env.BUILD_TARGET === "server";
@@ -29,7 +30,7 @@ export default defineConfig({
     },
   },
   plugins: [
-    // We include types to ease the use of the library
-    dts({ tsgo: true }),
+    // We include types to ease the use of the library — build only, not dev server
+    (process.env.BUILD_TARGET ? dts({ tsgo: true }) : null) as Plugin,
   ],
 });
